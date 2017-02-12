@@ -5,7 +5,7 @@ Nopea empriininen tutkimuskin sen osoittaa: melkein joka palvelu tarjoaa hanakas
 
 Koodiklinikka tarjosi oppia/aikayksikkö -asteikolla yhden TTY-aikani kenties laadukkaimmista tunneista. Esimerkissä käytiin nopeasti datan hakeminen Twitter-API-rajapinnasta, sen käsittely ja visualisoiminen.
 
-Esimerkki oli ymmärrettävästi sangen nopeatempoinen, mutta auttoi riittävästi: demon pohjalta pystyi toistamaan suurimman osan tempuista itsekin. Koodiklinikalla haettiin twitteristä joukko twiittejä API-haulla, poimittin niistä maininnat, luotiin graafi ja visualisoitiin se Gelphillä. Esimerkin puuttuessa (tätä kirjoittaessa) oma toistokokeiluni käytti Tweepyä Twitter-hakuun (kiitos https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/) ja visualisointiin networkx-kirjastoa. Sainkin lopulta luotua Gelphillä näytettävän graafin, joskin Geplhin UI ei vielä täysin auennut. Koodi: ./../TweetReader/tweetsToNetwork.py
+Esimerkki oli ymmärrettävästi sangen nopeatempoinen, mutta auttoi riittävästi: demon pohjalta pystyi toistamaan suurimman osan tempuista itsekin. Koodiklinikalla haettiin twitteristä joukko twiittejä API-haulla, poimittin niistä maininnat, luotiin graafi ja visualisoitiin se Gelphillä. Esimerkin puuttuessa (tätä kirjoittaessa) oma toistokokeiluni käytti Tweepyä Twitter-hakuun (kiitos <a href="https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/)">tutoriaalini</a> ja visualisointiin networkx-kirjastoa. Sainkin lopulta luotua Gelphillä näytettävän graafin, joskin Geplhin UI ei vielä täysin auennut. <a href="https://github.com/vrna/ohsiha/blob/master/TweatReader/tweetsToNetwork.py">Koodi</a>
 
 
 ##Oivallukset (5)
