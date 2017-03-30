@@ -1,5 +1,4 @@
-18:40  22:40
-Harjoitustyön 2. vaiheen palautus.
+#Harjoitustyön 2. vaiheen palautus.
 
 Sanon vaan kerran: toteutus toimii, muttei ole kaunein mahdollinen. Mutta se toimii.
 
