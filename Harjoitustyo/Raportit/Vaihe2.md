@@ -49,23 +49,22 @@ jossa mylists() haki tietokannassa haluamani objektit muuttujaan. Kun tämä muu
 
 Poistaminen piti toteuttaa hieman kankeasti lisäämällä ylimääräinen input-elementti arvolla "deleting". Jos se oli olemassa, poistettiin löydetty objekti.
 
-Vaikeaa:
+##Vaikeaa:
 1. oikean pohjan löytäminen ja alkuun pääseminen, oikeat kirjastot jne.
-2. tietojen välittäminen html:n ja palvelimen välillä, ts. millä saan tietokantaobjektit näkymään.
-3. pysyminen kärryillä siitä, pitikö neuvoa etsiä html:stä, pythonista, flaskista vai milloin mistäkin. Ts. mikä kuuluu mihinkin kehykseen.
+1. tietojen välittäminen html:n ja palvelimen välillä, ts. millä saan tietokantaobjektit näkymään.
+1. pysyminen kärryillä siitä, pitikö neuvoa etsiä html:stä, pythonista, flaskista vai milloin mistäkin. Ts. mikä kuuluu mihinkin kehykseen.
 
-Helppoa:
+##Helppoa
 1. perustoiminnot, kuten ohjelmalogiikka tai html-koodaus sitten kun sai kiinni välitettävästä kutsusta ja datasta.
-2. tiedon etsiminen. Yllättävän yleisistä virheistä tyyllin "bad request" löytyi nopeasti hyödyllisiäkin vihjeitä.
-3. kokeilu sitten kun puolivahingossa sai debug-tilan päälle, joka päivitti python-scriptiä lennosta ja johon pystyi tulostamaan tarvittaessa lisäinfoa.
+1. tiedon etsiminen. Yllättävän yleisistä virheistä tyyllin "bad request" löytyi nopeasti hyödyllisiäkin vihjeitä.
+1. kokeilu sitten kun puolivahingossa sai debug-tilan päälle, joka päivitti python-scriptiä lennosta ja johon pystyi tulostamaan tarvittaessa lisäinfoa.
 
-
-Linkkejä:
-Loginiin parikin:
+##Linkkejä:
+###Loginiin parikin:
 https://flask-login.readthedocs.io/en/latest/
 https://blog.openshift.com/use-flask-login-to-add-user-authentication-to-your-python-application/
 
-Tämän tutoriaalin pohjalta sain loginin lopulta toimimaankin, ja tämän pohjalta onnistui muutkin toiminnot soveltamalla:
+##Tämän tutoriaalin pohjalta sain loginin lopulta toimimaankin, ja tämän pohjalta onnistui muutkin toiminnot soveltamalla:
 https://www.youtube.com/watch?v=vVx1737auSE
 https://github.com/PrettyPrinted/mongodb-user-login
 
