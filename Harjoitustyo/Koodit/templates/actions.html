@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>you are logged in </p>
+<div class="container">
+    <div class="row">
+        <!-- add -->
+        <div class="col-md-4 col-md-offset-4">
+
+          {% for ls in cont %}
+              {{ls.name}}
+              <form method=POST action="{{ url_for('list') }}">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="listname" value="{{ls.name}}">
+                    <input type="text" class="form-control" name="content" value="{{ls.content}}">
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
+                </div>
+              </form>
+              <form method=POST action="{{ url_for('list') }}">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="listname" value="{{ls.name}}">
+                    <input type="hidden" class="form-control" name="deleting" value="true">
+                    <button type="submit" class="btn btn-primary btn-block">Delete</button>
+                </div>
+              </form>
+              <br/>
+
+          {% endfor %}
+
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <form method=POST action="{{ url_for('list') }}">
+                <div class="form-group">
+                    <label for="exampleList">List</label>
+                    <input type="text" class="form-control" name="listname" placeholder="list name">
+                    <input type="text" class="form-control" name="content" placeholder="list content">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add or update List</button>
+            </form>
+            <br>
+        </div>
+        <!-- logout -->
+        <div class="col-md-4 col-md-offset-4">
+            <form method=POST action="{{ url_for('logout') }}">
+                <button type="submit" class="btn btn-primary btn-block">Logout</button>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

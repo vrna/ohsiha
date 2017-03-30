@@ -1,0 +1,44 @@
+Mikäli aikaa riittää, saatan pyrkiä kohti jonkinlaista levyraatisovellusta, jolla voisi hakea Spotifysta-soittolistan, antaa äänet kappaleille ja julistaa useammasta äänestystuloksesta lopputuloksen. Tavoitteena nyt on kuitenkin enemmän oppia tekniikoita, ja lupaan yllättyä sievoisesti jos minulla on loppujen lopuksi oikeasti käyttökelpoinen sovellus.
+
+Rakensin sovelluspakettini Pythonin varaan.
+
+Python on ennestään tuttu, ja viime aikoina opettelemista ohjelmointikielistä se on luultavasti vähiten ärräpäitä tuottanut. Vaikka olen testeillä todennut että suorituskyvyssä Python jää nopeasti jälkeen esim. Java/C++ -toteutuksista, olen nauttinut kielen yksinkertaisuudesta ja hyvistä kirjastoista.
+
+Backend on tarkoitus toteuttaa Pythonilla hyväksikäyttäen Flaskia, joka on tuttu luennoilta lähinnä. Frontendiksi valitsin Reactin, koska se oli ensimmäinen mitä google tarjosi kun laitoin hakusanaksi "Python front end". MongoDB on osittain tuttu historiasta, joten valitsin sen tietokannaksi. Katsotaan.
+
+Miten asentaminen tapahtui? Kuvaa keskeiset vaiheet ja mahdollliset ongelmat.
+Pythonin käytön aloitin yksinkertaisesti hankkimalla Anacondan https://docs.continuum.io/anaconda/install, joka on nopeuttanut alkuvaihetta, kun jokaista tarvitsemaansa kirjastoa ei tarvitse erikseen ladata päästäkseen eteenpäin. Sovelluksella pystyisi käsittääkseni myös hallitsemaan tehokkaasti Python-kirjastojensa versiointiakin, mutta sitä en ole toistaiseksi opetellut. Pidemmällä kaavalla olisi hyödyllistä toki opetella nämäkin, eikä vain odotella ensimmäistä kirjastoversiokonfliktiaan.
+
+Kun Python oli asennettu, Flask oli nopea homma. Kuten tutoriaali neuvoo:
+$ pip install Flask
+
+ja rock on. Reactin käyttöönottoon tarvitaan vain sopiva script-loitsu html-tiedostossa:
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+
+MongoDB:tä varten löysin nopeasti pymongo-kirjaston, jonka asennus onnistui ihan
+$ pip install pymongo
+
+Tämän jälkeen kävin lataamassa MongoDB:n Windows 64bit version.
+
+Tietokannan raakileen sai pystyyn, kun loi data/db kansion ja käynnisti instanssin mongod.exe-kommennolla. Tämän jälkeen pystyin koittamaan lyhyen kirjoitus- ja luku-operaatioon pymongo-tutoriaali mukaillen. http://api.mongodb.com/python/current/tutorial.html
+
+Lisäksi olen aikaisemmin ottanut käyttöön GitHubin versionhallintaan ja myös samalla tiedostojen ym jakamiseen, sekä Atomin koodaamista varten.
+
+Koodit, pelkkiä lyhyitä simppeleitä demoja tosin:
+https://github.com/vrna/ohsiha/tree/master/Harjoitustyo/Koodit
+- mongodemo.py
+- pythonreact.html
+
+Erityisen hyödylliset lähteet tehtävän suorittamisessa:
+Python https://www.continuum.io/downloads
+Flask http://flask.pocoo.org/
+React https://realpython.com/blog/python/the-ultimate-flask-front-end/
+MongoDB http://api.mongodb.com/python/current/tutorial.html
+Atom https://atom.io/
+
+Helppoa/hankalaa:
+1. Python oli jo ennestään, jolloin Flaskin ja Pymongon hankkimisaika laskettiin sekunneissa.
+2. Hetken aikaa kesti löytää ohjeet mongodb:n käynnistämiseen, ja tuntui kököltä kun ei se edes itse osannut luoda tarvitsemaansa kansiota!
+3. perinteinen useamman tiedoston, ohjeen ja komentorivi-ikkunan hallinta taisi olla vaikein osuus.
