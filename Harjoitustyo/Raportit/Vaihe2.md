@@ -77,8 +77,11 @@ Poistaminen piti toteuttaa hieman kankeasti lisäämällä ylimääräinen input
 https://flask-login.readthedocs.io/en/latest/
 https://blog.openshift.com/use-flask-login-to-add-user-authentication-to-your-python-application/
 
-## Tämän tutoriaalin pohjalta sain loginin lopulta toimimaankin, ja tämän pohjalta onnistui muutkin toiminnot soveltamalla:
+### Tämän tutoriaalin pohjalta sain loginin lopulta toimimaankin, ja tämän pohjalta onnistui muutkin toiminnot soveltamalla:
 https://www.youtube.com/watch?v=vVx1737auSE
 https://github.com/PrettyPrinted/mongodb-user-login
 
 Perusgooglaus: pymongo, html, flask, python...
+
+### lähdekoodit:
+https://github.com/vrna/ohsiha/tree/master/Harjoitustyo/Koodit
