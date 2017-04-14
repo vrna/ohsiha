@@ -8,14 +8,16 @@
 
           {% for ls in cont %}
               {{ls.name}}
-              <form method=POST action="{{ url_for('list') }}">
+              {{ls._id}}
+              <form method=POST action="{{ url_for('lists') }}">
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="listname" value="{{ls.name}}">
                     <input type="text" class="form-control" name="content" value="{{ls.content}}">
                     <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
               </form>
-              <form method=POST action="{{ url_for('list') }}">
+              <a href="{{ url_for('lists')}}{{ls._id}}">Open</a>
+              <form method=POST action="{{ url_for('lists') }}">
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="listname" value="{{ls.name}}">
                     <input type="hidden" class="form-control" name="deleting" value="true">
@@ -28,7 +30,7 @@
 
         </div>
         <div class="col-md-4 col-md-offset-4">
-            <form method=POST action="{{ url_for('list') }}">
+            <form method=POST action="{{ url_for('lists') }}">
                 <div class="form-group">
                     <label for="exampleList">List</label>
                     <input type="text" class="form-control" name="listname" placeholder="list name">

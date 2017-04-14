@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>you are logged in </p>
+<div class="container">
+    <div class="row">
+        <!-- add -->
+        <div class="col-md-4 col-md-offset-4">
+            <h1>{{cont.name}}</h1>
+
+            <form method=POST action="{{ url_for('track') }}">
+              <div class="form-group">
+                  <input type="hidden" class="form-control" name="playlist_id" value="{{cont._id}}">
+                  <input type="text" class="form-control" name="trackurl" value="">
+                  <button type="submit" class="btn btn-primary btn-block">Add tracks by Spotify URL, separate by ,</button>
+              </div>
+            </form>
+
+            <h2>tracks</h2>
+
+            {% for tr in cont.tracks %}
+                <p>{{tr}}</p>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

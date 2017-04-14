@@ -15,12 +15,20 @@ app = Flask(__name__)
 
 mongo = PyMongo(app)
 mytmp = []
-def mylists():
+from bson.objectid import ObjectId
+def mylists(list_id=None):
     #mytmp = []
     #mytmp.append("hjeep")
-    lists = mongo.db.lists
-    tm = lists.find({}, {'_id': 0, 'name': 1, 'content': 1})
-    return tm
+    if list_id is None:
+        lists = mongo.db.lists
+        tm = lists.find({}, {'_id': 1, 'name': 1, 'content': 1})
+        return tm
+    else:
+        lists = mongo.db.lists
+        tm = lists.find({ '_id': ObjectId(list_id) }, {'_id': 1, 'name': 1, 'content': 1, 'tracks': 1})
+        print(tm[0] , file=sys.stderr)
+        return tm[0]
+
     #lists = mongo.db.lists
     #mytmp2= list()
     #for lis in lists.find():
@@ -75,8 +83,13 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
-@app.route('/list', methods=['POST', 'GET'])
-def list():
+@app.route('/lists/', methods=['POST', 'GET'])
+@app.route('/lists/<list_id>', methods=['POST', 'GET'])
+def lists(list_id=None):
+
+    if list_id is not None:
+        print("opening " + str(list_id), file=sys.stderr)
+
     if request.method == 'POST':
         print('post' , file=sys.stderr)
         if request.form['listname'] == "":
@@ -89,7 +102,7 @@ def list():
 
         existing = lists.find_one({'name' : request.form['listname']})
         if existing is None:
-            
+
             lists.insert({'name' : request.form['listname'], 'content' : request.form['content']})
             print("it doesn't exist..", file=sys.stderr)
         else:
@@ -109,7 +122,52 @@ def list():
         print('Getting!', file=sys.stderr)
         #ls = mylists()
         #return render_template('actions.html',cont=ls)
-        return render_template('actions.html',cont=mylists())
+        if list_id is None:
+            return render_template('actions.html',cont=mylists())
+        else:
+            return render_template('listview.html',cont=mylists(list_id))
+# test url set
+# https://open.spotify.com/track/6RrxpL1QOgTCtQZ5XvfVEa,https://open.spotify.com/track/69f8AOw6aMSyDkkDiA9nrg,https://open.spotify.com/track/5uDpwSGjljhIgDB1ZYdp9c
+import spotipy
+import spotipy.util
+import json
+@app.route('/track', methods=['GET','POST'])
+def track():
+    print('Came here at least', file=sys.stderr)
+    if request.method == 'POST':
+
+        playlist_id = request.form['playlist_id']
+        urlInput = request.form['trackurl']
+        urls = urlInput.split(',')
+
+        trackIds = []
+        for url in urls:
+            trackIds.append( url.split('track/')[1])
+        sp = spotipy.Spotify()
+        results = sp.tracks(trackIds)
+
+        tracks = []
+        for track in results['tracks']:
+            # i want to get artist and track
+            artist = track["album"]["artists"][0]["name"]
+            song = track["name"]
+            trackname = artist + " - " + song
+            tracks.append(trackname)
+        lists = mongo.db.lists
+
+        playlist = lists.find_one({'_id' : ObjectId(playlist_id)})
+        if playlist is not None:
+            for tr in tracks:
+                playlist['tracks'].append(tr)
+            lists.save(playlist)
+            print("hmm saved something",file=sys.stderr)
+        else:
+            print("hu couldn't find it",file=sys.stderr)
+
+    return render_template('listview.html',cont=mylists(playlist_id))
+#import spotipy
+#import spotipy.util
+#import json
 
 # CRUD
 # add
