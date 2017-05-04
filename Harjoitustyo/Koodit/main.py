@@ -103,7 +103,7 @@ def lists(list_id=None):
         existing = lists.find_one({'name' : request.form['listname']})
         if existing is None:
 
-            lists.insert({'name' : request.form['listname'], 'content' : request.form['content']})
+            lists.insert({'name' : request.form['listname'], 'content' : request.form['content'], 'tracks':[]})
             print("it doesn't exist..", file=sys.stderr)
         else:
             print("it exists", file=sys.stderr)
@@ -150,6 +150,7 @@ def track():
         for track in results['tracks']:
             # i want to get artist and track
             artist = track["album"]["artists"][0]["name"]
+            #print(artist, file=sys.stderr)
             song = track["name"]
             trackname = artist + " - " + song
             tracks.append(trackname)
@@ -157,8 +158,10 @@ def track():
 
         playlist = lists.find_one({'_id' : ObjectId(playlist_id)})
         if playlist is not None:
+            print(playlist, file=sys.stderr)
+
             for tr in tracks:
-                playlist['tracks'].append(tr)
+                playlist['tracks'].append(tr) # https://open.spotify.com/track/6Pnry8sI4PE3TAgYURI0mI
             lists.save(playlist)
             print("hmm saved something",file=sys.stderr)
         else:
